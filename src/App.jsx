@@ -7,6 +7,8 @@ import { mockMovieData } from './mockData'
 import confetti from 'canvas-confetti'
 import { useTranslation } from 'react-i18next'
 import './i18n'
+import { Analytics } from "@vercel/analytics/react"
+import AdComponent from './components/AdComponent'
 
 const LanguageSelect = styled(Select)`
   position: absolute;
@@ -293,6 +295,8 @@ function App() {
 
   return (
     <Container>
+      <AdComponent position="left" />
+      <AdComponent position="right" />
       <LanguageSelect
         defaultValue="en"
         onChange={handleLanguageChange}
