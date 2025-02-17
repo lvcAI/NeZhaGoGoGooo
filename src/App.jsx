@@ -237,7 +237,7 @@ function App() {
         const updatedData = prevData.map((movie) => {
           if (movie.movieId === 1294273) {
             const oldValue = movie.rawValue;
-            const randomIncrease = Math.floor(Math.random() * (10000000 - 100000 + 1) + 100000);
+            const randomIncrease = Math.floor(Math.random() * (10000 - 1000 + 1) + 1000);
             const newValue = oldValue + randomIncrease;
             const formattedIncrease = (randomIncrease / 10000).toFixed(0);
             console.log(`[${now}] 哪吒票房更新：${oldValue} -> ${newValue} (增加${formattedIncrease}万)`);
@@ -253,7 +253,9 @@ function App() {
               ...movie,
               rawValue: newValue,
               box: (newValue / 100000000).toFixed(2),
-              increase: i18n.language === 'en' ? `+${(randomIncrease / 1000000).toFixed(2)}M` : `+${formattedIncrease}万`
+              increase: i18n.language === 'en' ? 
+                (randomIncrease >= 100000 ? `+${(randomIncrease / 100000).toFixed(1)}十万` : `+${(randomIncrease / 1000).toFixed(1)}K`) : 
+                `+${formattedIncrease}万`
             };
           }
           return movie;
@@ -270,8 +272,14 @@ function App() {
             };
             if (movie.movieId === 1294273) {
               console.log(`[${now}] 哪吒当前排名：第${movieData.rank}名`);
-              setShowFloatingNumber(true);
-              setTimeout(() => setShowFloatingNumber(false), 5000);
+              // 先重置状态，确保动画可以重新触发
+              setShowFloatingNumber(false);
+              // 使用setTimeout延迟设置状态，确保状态已经被重置
+              setTimeout(() => {
+                setShowFloatingNumber(true);
+                // 10秒后再重置状态
+                setTimeout(() => setShowFloatingNumber(false), 3000);
+              }, 100);
             }
             return movieData;
           });
@@ -314,7 +322,7 @@ function App() {
                 <>
                   <MovieCard
                     animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    transition={{ duration: 5, repeat: Infinity }}
                   >
                     <img src={prevMovie.poster} alt={prevMovie.movieName} />
                     <h3>
@@ -372,8 +380,8 @@ function App() {
                     {showFloatingNumber && (
                       <FloatingNumber
                         initial={{ y: 0, opacity: 1 }}
-                        animate={{ y: -50, opacity: 0 }}
-                        transition={{ duration: 5, ease: "easeOut" }}
+                        animate={{ y: -100, opacity: 0 }}
+                        transition={{ duration: 3, ease: "easeInOut" }}
                       >
                         {movie.increase}
                       </FloatingNumber>

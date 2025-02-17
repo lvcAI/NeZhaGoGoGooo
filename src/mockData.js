@@ -100,11 +100,11 @@ export const mockMovieData = [
         "poster": "https://image.tmdb.org/t/p/w500/2bXbqYdUdNVa8VIWXVfclP2ICtT.jpg"
     },
     {
-        "box": "120.00",
+        "box": "120.78",
         "force": true,
         "indexItems": [
             {
-                "boxInfo": "119.23",
+                "boxInfo": "120.02",
                 "title": "中国(含港澳台)",
                 "unitDesc": "亿"
             },
@@ -116,10 +116,10 @@ export const mockMovieData = [
         ],
         "movieId": 1294273,
         "movieName": "哪吒之魔童闹海",
-        "movieNameEn": "Ne Zha 2", // TMDb entry not yet available
-        "rawValue": 12000750171,
+        "rawValue": 12078930586,
         "releaseTime": "2025",
-        "poster": "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg" // Pending release
+        "poster": "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg" ,
+        "movieNameEn": "Ne Zha 2", 
     },
     {
         "box": "110.26",
